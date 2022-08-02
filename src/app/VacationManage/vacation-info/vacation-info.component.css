@@ -1,0 +1,41 @@
+.showV{
+  margin-top: 10px;
+  margin-left: 38%;
+}
+
+.nav{
+  margin-top: 120px;
+  width: 400px;
+  margin-left: 34%;
+  padding-bottom: 4px;
+  border-bottom: 2px double black;
+}
+
+
+button{
+  font-size: smaller;
+  height: 28px;
+  width: 80px;
+  margin-left: 40px;
+  background-color: rgb(3,56,73);
+}
+
+button:hover{
+  background-color: rgb(7, 95, 95);
+  border-color: rgb(7, 95, 95);
+}
+
+.nav-pills{
+  margin-top: 80px;
+  margin-left: 5%;
+}
+
+.icon{
+  padding-left: 35px;
+}
+
+.card{
+  border: 0px;
+}
+
+

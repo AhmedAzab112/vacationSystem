@@ -1,0 +1,27 @@
+form{
+  margin-top: 90px;
+  margin-left: 30%;
+  border-left: 1px solid black ;
+}
+
+input{
+  font-style: italic;
+    margin-left: 17px;
+    font-size: 22px;
+    font-weight: 100;
+    font-family: system-ui;
+}
+
+
+
+
+label{
+  padding: 15px;
+  font-weight: 600;
+  font-size: 20px;
+  color: rgb(17, 98, 124);
+  width: 350px;
+}
+
+
+

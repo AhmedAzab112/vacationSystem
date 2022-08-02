@@ -1,0 +1,22 @@
+nav{
+  height: 39px;
+  background-color: rgb(56, 144, 171);
+}
+
+a{
+  margin: 100px;
+  font-weight: 800;
+  font-style: oblique;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color: rgb(246, 246, 246);
+
+}
+
+
+a:hover{
+  background-color: rgb(7, 95, 95);
+  height: auto;
+  color: white;
+}
+
+

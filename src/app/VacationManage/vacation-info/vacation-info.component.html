@@ -1,0 +1,45 @@
+<ul class="nav">
+  <li class="nav-item">
+    <button type="button" class="btn btn-secondary btn-sm" (click)="changeStatus('warning')">Pendding</button>
+  </li>
+  <li class="nav-item">
+    <button type="button" class="btn btn-secondary btn-sm" (click)="changeStatus('success')">Active</button>
+  </li>
+  <li class="nav-item">
+    <button type="button" class="btn btn-secondary btn-sm" (click)="changeStatus('danger')">Reject</button>
+  </li>
+</ul>
+
+<div class="showV">
+  <div class="card" style="width: 18rem">
+    <div class="{{status}}" style="max-width: 18rem">
+      <div class="card-header">Ticket #204081</div>
+      <div class="card-body">
+        <h5 class="card-title"><i class="far fa-clock"></i> Pendding</h5>
+      </div>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{name}}</li>
+      <li class="list-group-item">{{email}}</li>
+      <li class="list-group-item">{{sesa}}</li>
+      <li class="list-group-item">
+        <i class="fas fa-calendar-alt" style="font-size: 14px"></i> {{startDate}}
+        <i class="fas fa-arrow-right" style="font-size: 13px"></i> {{endDate}}
+      </li>
+    </ul>
+    <div class="card-body">
+      <a href="#" class="card-link"
+        ><i
+          class="fas fa-edit icon"
+          style="font-size: 24px; color: rgb(29, 183, 29)"
+        ></i
+      ></a>
+      <a href="#" class="card-link"
+        ><i class="fas fa-remove icon" style="font-size: 24px; color: red"></i
+      ></a>
+      <a href="#" class="card-link"
+        ><i class="fas fa-eye icon" style="font-size: 24px; color: blue"></i
+      ></a>
+    </div>
+  </div>
+</div>

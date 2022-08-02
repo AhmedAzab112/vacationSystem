@@ -1,0 +1,139 @@
+<form [formGroup]="NewVacation" (ngSubmit)="fireData()">
+  <div class="form-group row">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
+    <div class="col-sm-10">
+      <input
+        formControlName="name"
+        type="text"
+        readonly
+        class="form-control-plaintext"
+        id="staticEmail"
+      />
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="staticEmail" class="col-sm-2 col-form-label">E-Mail</label>
+    <div class="col-sm-10">
+      <input
+        formControlName="email"
+        type="text"
+        readonly
+        class="form-control-plaintext"
+        id="staticEmail"
+      />
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="staticEmail" class="col-sm-2 col-form-label">SESA</label>
+    <div class="col-sm-10">
+      <input
+        formControlName="sesa"
+        type="text"
+        readonly
+        class="form-control-plaintext"
+        id="staticEmail"
+      />
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputPassword" class="col-sm-2 col-form-label">Report To</label>
+    <div class="col-sm-10">
+      <input
+        formControlName="reportto"
+        type="text"
+        readonly
+        class="form-control-plaintext"
+        id="staticEmail"
+      />
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword" class="col-sm-2 col-form-label"
+      >Vacation Type</label
+    ><span
+      *ngIf="
+        vacationType?.invalid && vacationType?.touched && vacationType?.dirty
+      "
+    >
+      * Invalid vacation Type</span
+    >
+    <div class="col-sm-10">
+      <select
+        class="form-control form-control-sm"
+        formControlName="vacationType"
+      >
+        <option>Paid</option>
+        <option>UnPaid</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword" class="col-sm-2 col-form-label"
+      >Start Date</label
+    >
+    <div class="col-sm-10">
+      <input
+        formControlName="startDate"
+        type="date"
+        class="form-control"
+        id="inputPassword"
+        placeholder="Password"
+      /><span
+        *ngIf="startDate?.invalid && startDate?.touched && startDate?.dirty"
+      >
+        * Invalid start Date</span
+      >
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword" class="col-sm-2 col-form-label">End Date</label
+    >
+    <div class="col-sm-10">
+      <input
+        formControlName="endDate"
+        type="date"
+        class="form-control"
+        id="inputPassword"
+        placeholder="Password"
+      /><span *ngIf="endDate?.invalid && endDate?.touched && endDate?.dirty">
+        * Invalid End Date</span
+      >
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword" class="col-sm-2 col-form-label"
+      >Attach File</label
+    >
+    <div class="col-sm-10">
+      <input
+        type="file"
+        class="form-control"
+        id="inputPassword"
+        formControlName="file"
+      /><span *ngIf="file?.invalid && file?.touched && file?.dirty">
+        * Invalid File</span
+      >
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputPassword" class="col-sm-2 col-form-label"
+      >Aditional Comments (optional)</label
+    >
+    <div class="col-sm-10">
+      <textarea
+        formControlName="comment"
+        placeholder="Aditional Comments"
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+      ></textarea><span *ngIf="comment?.invalid && comment?.touched && comment?.dirty">
+        * Invalid comment</span
+      >
+    </div>
+  </div>
+  <button [disabled]="NewVacation.invalid" type="submit" class="btn btn-dark">
+    Submit
+  </button>
+</form>
+

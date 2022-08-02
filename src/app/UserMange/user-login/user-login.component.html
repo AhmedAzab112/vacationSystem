@@ -1,0 +1,108 @@
+<div class="card text-center">
+  <div class="card-body">
+    <h5 class="card-title">
+      <i
+        [style.display]="display_icon"
+        class="far fa-address-card"
+        style="font-size: 40px; color: white"
+      ></i>
+
+      {{ massage | uppercase }}
+    </h5>
+    <button
+      [style.display]="buttonDisplay"
+      (click)="gettingStarted()"
+      class="btn btn-dark btnc"
+    >
+      GETTING STARTED
+    </button>
+  </div>
+</div>
+
+<table *ngIf="!checkGetStart" class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col" colspan="3">Vacation Policies</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="3">
+        Our “vacation year” is based upon [anniversary/calendar] year
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        This means that your vacation year begins on [the date you started work
+        with our Company and runs until the day
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        The maximum amount of vacation hours you accrue is determined by your
+        rate of accrual.
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        The maximum amount of vacation hours you accrue is determined by your
+        rate of accrual.
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        You should understand, however, that if your employment with our Company
+        is terminated
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<form *ngIf="checkGetStart" [formGroup]="Login" (ngSubmit)="SubmitData()">
+  <div class="mb-3 mt-3">
+    <label for="email" class="form-label">Email</label>
+    <span *ngIf="email?.invalid && email?.touched && email?.dirty">
+      * Invalid Email</span
+    >
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      placeholder="Your email"
+      formControlName="email"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="pwd" class="form-label">Password</label>
+    <span *ngIf="password?.invalid && password?.touched && password?.dirty">
+      * Invalid Password</span
+    >
+    <input
+      type="password"
+      class="form-control"
+      id="pwd"
+      placeholder="Your password"
+      formControlName="password"
+    />
+  </div>
+  <div class="form-check mb-3">
+    <label class="form-check-label acc">
+      <label
+        >Don't Have Account?
+        <a
+          class="reg"
+          routerLink="/user-new"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          >Click Here</a
+        >
+      </label>
+    </label>
+  </div>
+  <button [disabled]="Login.invalid" type="submit" class="btn btn-dark">
+    Submit
+  </button>
+</form>
+
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>

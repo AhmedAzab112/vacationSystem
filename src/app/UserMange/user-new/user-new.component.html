@@ -1,0 +1,121 @@
+<form [formGroup]="createUser" (ngSubmit)="fireData()">
+  <div class="form-group">
+    <label for="fname"
+      >First Name
+      <span *ngIf="fname?.invalid && fname?.touched && fname?.dirty">
+        * Invalid First Name</span
+      >
+      <input
+        id="fname"
+        type="text"
+        class="form-control"
+        placeholder="Your First Name"
+        formControlName="fname"
+    /></label>
+    <label for="lname"
+      >Last Name
+      <span *ngIf="lname?.invalid && lname?.touched && lname?.dirty">
+        * Invalid Last Name</span
+      >
+      <input
+        id="lname"
+        type="text"
+        class="form-control"
+        placeholder="Your Last Name"
+        formControlName="lname"
+    /></label>
+  </div>
+  <div class="form-group">
+    <label for="sesa"
+      >SESA Number
+      <span *ngIf="sesa?.invalid && sesa?.touched && sesa?.dirty">
+        * Invalid sesa</span
+      >
+      <input
+        id="sesa"
+        type="number"
+        class="form-control"
+        placeholder="Your SESA Number"
+        formControlName="sesa"
+    /></label>
+    <label for="Email"
+      >Email
+      <span *ngIf="email?.invalid && email?.touched && email?.dirty">
+        * Invalid Email</span
+      >
+      <input
+        id="Email"
+        type="email"
+        class="form-control"
+        placeholder="Your Email"
+        formControlName="email"
+    /></label>
+  </div>
+  <div class="form-group">
+    <label for="Report"
+      >Report To
+      <span *ngIf="reportto?.invalid && reportto?.touched && reportto?.dirty">
+        * Invalid report to</span
+      >
+      <input
+        id="Report"
+        type="text"
+        class="form-control"
+        placeholder="Your Manager"
+        formControlName="reportto"
+    /></label>
+    <label for="Department"
+      >Department
+      <span
+        *ngIf="department?.invalid && department?.touched && department?.dirty"
+      >
+        * Invalid department</span
+      >
+      <input
+        id="Department"
+        type="email"
+        class="form-control"
+        placeholder="Your Department"
+        formControlName="department"
+    /></label>
+  </div>
+  <div class="form-group">
+    <label for="Password"
+      >Password
+      <span *ngIf="password?.invalid && password?.touched && password?.dirty">
+        * Invalid password</span
+      >
+      <input
+        [(ngModel)]="passwordCp"
+        id="Password"
+        type="text"
+        class="form-control"
+        placeholder="Your New Password"
+        formControlName="password"
+    /></label>
+    <label for="Confirm"
+      >Confirm Password
+      <ng-container
+        *ngIf="
+          confirmpassword?.invalid &&
+          confirmpassword?.touched &&
+          confirmpassword?.dirty
+        "
+      >
+        <span *ngIf="password?.value !== confirmpassword?.value">
+          * Invalid confirm password</span
+        >
+      </ng-container>
+
+      <input
+        id="Confirm"
+        type="text"
+        class="form-control"
+        placeholder="Confirm New Password"
+        formControlName="confirmpassword"
+    /></label>
+  </div>
+  <button [disabled]="createUser.invalid" type="submit" class="btn btn-dark">
+    Submit
+  </button>
+</form>

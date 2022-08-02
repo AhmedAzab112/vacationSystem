@@ -1,0 +1,53 @@
+form{
+  margin-top: 100px;
+  margin-left: 30%;
+  border-left: 2px solid rgb(8, 17, 20) ;
+}
+
+
+label{
+  padding: 10px;
+  margin: 5px;
+  font-weight: 600;
+  font-size: 14px;
+
+}
+
+.check{
+  margin-left: 50px;
+}
+
+button{
+  margin-left: 5px;
+  width: 180px;
+  background-color: rgb(3, 56, 73);
+  border-color: rgb(151, 183, 195);
+}
+button:hover {
+  background-color: rgb(7, 95, 95);
+  border-color: rgb(7, 95, 95);
+}
+
+/* input:focus{
+  border-color: rgb(56, 144, 171);
+} */
+
+
+.btn{
+  color: white;
+}
+
+.ng-valid:not(form) {
+  border-left: 4px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 4px solid red; /* red */
+}
+
+
+span{
+  font-size: smaller;
+  color: red;
+  font-weight: 700;
+}
