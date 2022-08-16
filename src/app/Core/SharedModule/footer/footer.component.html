@@ -1,6 +1,8 @@
-
 <!-- Footer -->
-<footer class="bg-dark text-center text-white footer">
+<footer
+  [style.display]="footerDisplay"
+  class="bg-dark text-center text-white footer"
+>
   <!-- Grid container -->
   <div class="container p-4">
     <!-- Section: Social media -->
@@ -37,8 +39,8 @@
     </section>
     <!-- Section: Social media -->
     <a class="text-white" href="http://localhost:4200/user-login"
-      >©2020 Copyright: Vacation System
-    </a>
+      >©2020 Copyright: Vacation System </a
+    ><button (click)="changeLanguage()">عربي</button>
   </div>
 </footer>
 <!-- Footer -->

@@ -6,13 +6,17 @@ import { UserInfoComponent } from './user-info/user-info.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ViewControlService } from '../Core/Services/ViewControl';
+
 
 
 
 const routes: Routes = [
   { path: 'user-new', component: UserNewComponent },
   { path: 'user-info', component: UserInfoComponent },
-  { path: 'user-login', component: UserLoginComponent },
+  { path: 'home', component: UserLoginComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+
 ];
 
 
@@ -24,11 +28,14 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes)
+
   ],
   exports: [RouterModule],
-  providers: [UserDataService] // determine injector (DI token)
+
+  providers: [UserDataService, ViewControlService]  // determine injector (DI token)
 })
+
 export class UserManageModule { }

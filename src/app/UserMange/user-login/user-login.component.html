@@ -14,7 +14,7 @@
       (click)="gettingStarted()"
       class="btn btn-dark btnc"
     >
-      GETTING STARTED
+    {{ this.lan.words.getting }}
     </button>
   </div>
 </div>
@@ -22,45 +22,21 @@
 <table *ngIf="!checkGetStart" class="table table-hover table-dark">
   <thead>
     <tr>
-      <th scope="col" colspan="3">Vacation Policies</th>
+      <th scope="col" colspan="3">{{this.lan.words.tb_head}}</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <tr *ngFor="let list of this.lan.words.tb_column">
       <td colspan="3">
-        Our “vacation year” is based upon [anniversary/calendar] year
-      </td>
-    </tr>
-    <tr>
-      <td colspan="3">
-        This means that your vacation year begins on [the date you started work
-        with our Company and runs until the day
-      </td>
-    </tr>
-    <tr>
-      <td colspan="3">
-        The maximum amount of vacation hours you accrue is determined by your
-        rate of accrual.
-      </td>
-    </tr>
-    <tr>
-      <td colspan="3">
-        The maximum amount of vacation hours you accrue is determined by your
-        rate of accrual.
-      </td>
-    </tr>
-    <tr>
-      <td colspan="3">
-        You should understand, however, that if your employment with our Company
-        is terminated
+        {{ list }}
       </td>
     </tr>
   </tbody>
 </table>
 
-<form *ngIf="checkGetStart" [formGroup]="Login" (ngSubmit)="SubmitData()">
+<form [dir]="this.lan.words.dir" *ngIf="checkGetStart" [formGroup]="Login" (ngSubmit)="SubmitData()">
   <div class="mb-3 mt-3">
-    <label for="email" class="form-label">Email</label>
+    <label for="email" class="form-label">{{this.lan.words.email}}</label>
     <span *ngIf="email?.invalid && email?.touched && email?.dirty">
       * Invalid Email</span
     >
@@ -73,7 +49,7 @@
     />
   </div>
   <div class="mb-3">
-    <label for="pwd" class="form-label">Password</label>
+    <label for="pwd" class="form-label">{{this.lan.words.pass}}</label>
     <span *ngIf="password?.invalid && password?.touched && password?.dirty">
       * Invalid Password</span
     >
@@ -88,21 +64,19 @@
   <div class="form-check mb-3">
     <label class="form-check-label acc">
       <label
-        >Don't Have Account?
+        >{{this.lan.words.acc}}
         <a
           class="reg"
           routerLink="/user-new"
           routerLinkActive="active"
           ariaCurrentWhenActive="page"
-          >Click Here</a
+          >{{this.lan.words.acc_click}}</a
         >
       </label>
     </label>
   </div>
   <button [disabled]="Login.invalid" type="submit" class="btn btn-dark">
-    Submit
+    {{this.lan.words.submit}}
   </button>
+  <span *ngIf="validCheck"> * Invalid Email or Password</span>
 </form>
-
-<!-- The routed views render in the <router-outlet>-->
-<router-outlet></router-outlet>

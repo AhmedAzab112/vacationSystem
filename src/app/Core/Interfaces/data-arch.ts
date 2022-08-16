@@ -6,5 +6,6 @@ export interface DataArch {
   reportto: string;
   department: string;
   password: string;
+  img: string;
 }
 

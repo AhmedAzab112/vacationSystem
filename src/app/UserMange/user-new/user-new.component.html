@@ -88,7 +88,7 @@
       <input
         [(ngModel)]="passwordCp"
         id="Password"
-        type="text"
+        type="password"
         class="form-control"
         placeholder="Your New Password"
         formControlName="password"
@@ -109,10 +109,28 @@
 
       <input
         id="Confirm"
-        type="text"
+        type="password"
         class="form-control"
         placeholder="Confirm New Password"
-        formControlName="confirmpassword"
+        formControlName="confirmpassword" /></label
+    ><br />
+    <label for="Confirm"
+      >Your Image
+      <span
+        *ngIf="
+          confirmpassword?.invalid &&
+          confirmpassword?.touched &&
+          confirmpassword?.dirty
+        "
+      >
+        * Invalid Image</span
+      >
+      <input
+        id="Confirm"
+        type="input"
+        class="form-control"
+        placeholder="Confirm New Password"
+        formControlName="img"
     /></label>
   </div>
   <button [disabled]="createUser.invalid" type="submit" class="btn btn-dark">

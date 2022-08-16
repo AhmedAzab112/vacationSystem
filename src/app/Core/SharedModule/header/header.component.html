@@ -1,23 +1,59 @@
-<nav class="navbar navbar-expand-sm navbar-dark fixed-top">
+<nav
+  [style.display]="NavBarDisplay"
+  class="navbar navbar-expand-sm navbar-dark fixed-top"
+>
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="mynavbar">
       <ul class="navbar-nav me-auto">
+        <a class="navbar-brand">
+          <img
+            src="{{ this.GetUserData.UserLocalStorage.img }}"
+            width="30"
+            height="30"
+            class="img-circle"
+            alt=""
+          />
+          {{
+            this.GetUserData.UserLocalStorage.fname?.concat(
+              this.GetUserData.UserLocalStorage.lname
+            )
+          }}
+        </a>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/user-login">Home</a>
+          <a [style.display]="Home" class="nav-link" routerLink="/home">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/vacation-new">Request Vacation</a>
+
+        <li *ngIf="checkVacation()" class="nav-item">
+          <a
+            class="nav-link"
+            [style.display]="RequestVacation"
+            routerLink="/vacation-new"
+            >Request Vacation</a
+          >
         </li>
-        <li class="nav-item">
+
+        <li class="nav-item" [style.display]="ViewVacationDisplay">
           <a class="nav-link" routerLink="/vacation-info">View Vacation</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/user-new">Register</a>
+          <a
+            class="nav-link"
+            [style.display]="RegisterDisplay"
+            routerLink="/user-new"
+            >Register</a
+          >
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/user-info">View Profile</a>
         </li>
-
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="http://localhost:4200/home"
+            (click)="this.GetUserData.ClearData()"
+            >LogOut</a
+          >
+        </li>
       </ul>
     </div>
   </div>

@@ -1,7 +1,13 @@
+<!-- <br>
+<button (click)="postHttpData()">Post Http Data</button>
+<button (click)="getHttpData()">Get Http Data</button>
+<button (click)="putHttpData()">Put Http Data</button>
+<button (click)="deleteHttpData()">Delete Http Data</button> -->
+
 <form [formGroup]="createUser" disabled>
   <div class="form-group">
     <label for="fname"
-      >First Name
+      >{{ this.lan.words.fname }}
       <input
         readonly
         id="fname"
@@ -10,7 +16,7 @@
         formControlName="fname"
     /></label>
     <label for="lname"
-      >Last Name
+      >{{ this.lan.words.lname }}
       <input
         readonly
         id="lname"
@@ -21,7 +27,7 @@
   </div>
   <div class="form-group">
     <label for="sesa"
-      >SESA Number
+      >{{ this.lan.words.sesa }}
       <input
         readonly
         id="sesa"
@@ -30,7 +36,7 @@
         formControlName="sesa"
     /></label>
     <label for="Email"
-      >Email
+      >{{ this.lan.words.email }}
       <input
         readonly
         id="Email"
@@ -41,7 +47,7 @@
   </div>
   <div class="form-group">
     <label for="Report"
-      >Report To
+      >{{ this.lan.words.report }}
       <input
         readonly
         id="Report"
@@ -50,7 +56,7 @@
         formControlName="reportto"
     /></label>
     <label for="Department"
-      >Department
+      >{{ this.lan.words.dep }}
       <input
         readonly
         id="Department"

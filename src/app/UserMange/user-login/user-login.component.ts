@@ -1,7 +1,8 @@
+import { ENService } from 'src/app/Core/Languages/en.service';
 import { UserDataService } from 'src/app/Core/Services/UserData';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ThisReceiver } from '@angular/compiler';
+import { ViewControlService } from 'src/app/Core/Services/ViewControl';
 
 @Component({
   selector: 'app-user-login',
@@ -11,74 +12,98 @@ import { ThisReceiver } from '@angular/compiler';
 export class UserLoginComponent {
 
 
+
   //switch to login
   checkGetStart: boolean = false;
   buttonDisplay: string = 'inline';
 
-
   //welcome massage
-  massage = 'welcome to vacation system';
+  massage = this.lan.words.message;
   display_icon = 'none'
 
+  //check email valdation
+  validCheck = false
 
   //display to insure valid user and hidden form
   display: string = 'block';
 
-  //user data len
   index: number;
-  i: number;
 
+  constructor(private GetUserData: UserDataService, private GetViewControl: ViewControlService, public lan: ENService) {
 
-  // create instance from UserData Service
-  constructor(private GetUserData: UserDataService) {
-    this.index = GetUserData.data.length
-    this.i = GetUserData.data.length
+    this.index = GetUserData.current_index;
   }
 
-  gettingStarted() {
-    this.checkGetStart = true
-    this.buttonDisplay = 'none'
-  }
 
-  //create Login form
+  //#region create Login form outside constructor
   Login = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email, Validators.pattern('.*com$')]),
     password: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(12)])
   })
 
-
-  // check user valdation
-  SubmitData() {
-    if (this.GetUserData.data[--this.index]?.email == this.Login.value.email
-      &&
-      this.GetUserData.data[this.index]?.password == this.Login.value.password) {
-      console.log('valid user');
-      return this.authorizedUser();
-    }
-    console.log('not valid');
-  }
-
-  authorizedUser() {
-    this.checkGetStart = false
-    this.massage = 'Welcome ' + this.GetUserData.data[this.index]?.fname.concat(this.GetUserData.data[this.index]?.lname)
-    this.display_icon = 'inline'
-  }
-
-
-  //get data to make valdation
   get email() {
     return this.Login.get('email');
   }
   get password() {
     return this.Login.get('password');
   }
+  //#endregion
 
 
+  //#region launch form
+  gettingStarted(): boolean {
+    this.buttonDisplay = 'none'
+    return this.checkGetStart = true
+  }
+
+  //#endregion
+
+
+
+  //#region user valdation
+
+  //check user valdation email
+  SubmitData() {
+    if (this.GetUserData.getData(this.Login.value.email, this.Login.value.password)) {
+      console.log('valid user');
+
+      // enable navBar to authorized user
+      this.GetViewControl.EnableNavBar();
+
+      //disable register form after login
+      this.GetViewControl.DisableRegister();
+
+      //disable register form after login
+      this.GetViewControl.DisableHome();
+      return this.authorizedUser();
+    }
+
+    else {
+      this.validCheck = true;
+      console.log('not valid', this.GetUserData.current_index);
+    }
+  }
+
+
+
+  // retrieve data for authorized users
+  authorizedUser() {
+    // console.log(this.GetUserData.read())
+    this.checkGetStart = false
+    this.massage = 'Welcome ' + this.GetUserData.UserLocalStorage.fname.concat(this.GetUserData.UserLocalStorage.lname)
+    this.display_icon = 'inline'
+    this.buttonDisplay = 'none'
+  }
+  //#endregion
+
+
+  //#region track change value (just for test)
   // track changed value
   // constructor() {
   //   this.Login.valueChanges.subscribe(changes => {
   //     console.log('changes', this.email)
   //   })
   // }
+  //#endregion
 
 }

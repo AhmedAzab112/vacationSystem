@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header.component';
 import { UserManageModule } from 'src/app/UserMange/UserManage';
 import { VacationListModule } from 'src/app/VacationManage/vacation.module';
+import { ViewControlService } from '../../Services/ViewControl';
 
 
 
@@ -14,7 +15,9 @@ import { VacationListModule } from 'src/app/VacationManage/vacation.module';
     CommonModule,
     UserManageModule,
     VacationListModule,
+
   ],
-  exports: [HeaderComponent]
+  exports: [HeaderComponent],
+  providers: [ViewControlService]
 })
 export class HeaderModule { }
